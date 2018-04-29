@@ -28,7 +28,8 @@ body {
  
  .navbar-default .navbar-brand {
  
- color: #FF5A5F;
+ /*color: #FF5A5F;*/
+ color: #359cf3;
  
  font-size: 2em;
  
@@ -39,13 +40,15 @@ body {
   
 .btn-primary.btn {
  
- border: 1px solid #ff5a5f;
+ /*border: 1px solid #ff5a5f;*/
+ border : 1px solid #359cf3;
  
  border-radius: 2px;
  
  font-weight: bold;
  
- background-color: #ff5a5f;
+ /*background-color: #ff5a5f;*/
+ background-color: #359cf3;
  
  color: #fff;
  
@@ -56,11 +59,13 @@ body {
   
 .btn-primary.btn:hover, .btn-primary.btn:focus {
  
- border-color: #ff7e82;
+ /*border-color: #ff7e82;*/
+ border-color: #359cf3;
  
  border-bottom-color: #fa0008;
  
- background-color: #ff7e82;  
+ /*background-color: #ff7e82; */
+ background-color: #359cf3;
  
  outline:none;
  
