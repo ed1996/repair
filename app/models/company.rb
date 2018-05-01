@@ -1,5 +1,6 @@
 class Company < ActiveRecord::Base
   belongs_to :user
+  has_many :photos
   
   validates :category_artisan, presence: true
   validates :listingname, presence: true
