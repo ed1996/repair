@@ -1,0 +1,63 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Vous êtes artisan ? Enregistrez-vous maintenant !
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <%= form_for @company do |f| %>
+                <div class="row">
+                    <div class="col-md-12 select">
+                        <div class="form-group">
+                            <label>Catégorie artisan</label>
+                            <%= f.select :category_artisan, [["Plombier","Plombier"],["Serrurier","Serrurier"]], id: "category_artisan", prompt:"A sélectionner", class:"form-control" %>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>Le nom de votre entreprise</label>
+                        <%= f.text_field :listingname, placeholder:"Nom de l'entreprise", class:"form-control" %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>Description de votre entreprise</label>
+                        <%= f.text_field :summary, placeholder:"Description de l'entreprise", class:"form-control" %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>Adresse</label>
+                        <%= f.text_field :address, placeholder:"Adresse de l'entreprise", class:"form-control" %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>Téléphone</label>
+                        <%= f.text_field :phone, placeholder:"Téléphone professionnel", class:"form-control" %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>SIRET</label>
+                        <%= f.text_field :siret, placeholder:"SIRET", class:"form-control" %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Prix du déplacement</label>
+                            <div class="input-group">
+                                <%= f.text_field :price, placeholder:"ex 45€", class:"form-control" %>
+                            </div>
+                            <div class="input-group-addon">€</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="actions">
+                    <%= f.submit "Je valide mon entreprise", class:"btn btn-primary" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
