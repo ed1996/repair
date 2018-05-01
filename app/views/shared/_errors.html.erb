@@ -1,0 +1,13 @@
+<% unless @company.errors.empty? %>
+ 
+ <script type="text/javascript">
+ 
+     <% @company.errors.full_messages.each do |msg| %>
+ 
+               toastr.error('<%= msg %>')
+ 
+     <% end %>
+ 
+ </script>
+ 
+ <% end %>

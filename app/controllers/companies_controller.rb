@@ -42,7 +42,7 @@ class CompaniesController < ApplicationController
     end
     
     def company_params
-       params.require(:company).permit(:category_artisan, :summary, :address, :phone, :siret, :price) 
+       params.require(:company).permit(:category_artisan, :listingname, :summary, :address, :phone, :siret, :price) 
     end
     
     
