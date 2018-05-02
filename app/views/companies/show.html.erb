@@ -1,0 +1,48 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        
+        
+        <!-- Photo principale de l'entreprise -->
+        <div class="row">
+            <div class="col-md-12">
+                <%= image_tag @photos[0].image.url(), class:"img-responsive" if @photos.length > 0 %>
+            </div>
+        </div>
+        
+        <br>
+        
+        <!-- Informations principales -->
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-3 text-center">
+                        <%= image_tag avatar_url(@company.user), class:"img-circle avatar-large" %>
+                        <br><br>
+                        <%= @company.user.fullname %>
+                    </div>
+                    <div class="col-md-9">
+                        <h4><%= @company.listingname %></h4>
+                        <%= @company.address %>
+                        <div class="row text-center row-space-1">
+                            <div class="col-sm-2">
+                                <i class="fa fa-home fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <!-- Formulaire de reservation de rdv -->
+            </div>
+        </div>
+        
+        <!-- Description de l'entreprise -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2>A propos de l'entreprise</h2>
+                <p><%= @company.summary %></p>
+            </div>
+        </div>
+        
+    </div>
+</div>
