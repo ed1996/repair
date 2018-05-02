@@ -8,4 +8,7 @@ class Company < ActiveRecord::Base
   validates :phone, presence: true, length: {maximum: 10, minimum: 10}
   validates :siret, presence: true, length: {maximum: 15, minimum: 15}
   validates :price, presence: true, numericality: {only_integer: true}
+  
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 end
