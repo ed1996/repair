@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   
   has_many :companies
+  has_many :reviews
 end

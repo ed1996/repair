@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180502222055) do
+ActiveRecord::Schema.define(version: 20180503202801) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "category_artisan"
@@ -41,6 +41,18 @@ ActiveRecord::Schema.define(version: 20180502222055) do
   end
 
   add_index "photos", ["company_id"], name: "index_photos_on_company_id"
+
+  create_table "reviews", force: :cascade do |t|
+    t.text     "comment"
+    t.integer  "star",       default: 1
+    t.integer  "company_id"
+    t.integer  "user_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "reviews", ["company_id"], name: "index_reviews_on_company_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
