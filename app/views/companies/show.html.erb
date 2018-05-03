@@ -88,6 +88,22 @@
         </div>
         
         <br><br>
+        <hr>
+        
+        <!-- Commentaires -->
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Commentaires <%= @company.average_rating %> (<%= @reviews.count %>)</h3>
+                <div class="container">
+                    <%= render 'reviews/form' if !@hasReview %>
+                </div>
+                <div>
+                    <%= render 'reviews/list' %>
+                </div>
+            </div>
+        </div>
+        
+        <br><br>
         
         <!-- Google maps -->
         <div class="row">
