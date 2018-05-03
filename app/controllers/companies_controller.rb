@@ -30,6 +30,11 @@ class CompaniesController < ApplicationController
    
    def show
        @photos = @company.photos
+       
+       if current_user
+           @reviews = @company.reviews
+           @hasReview = @reviews.find_by(user_id: current_user.id) if current_user
+       end
    end
    
    def edit

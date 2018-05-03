@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   root 'pages#home'
   
   resources :users, only: [:show]
-  resources :companies
+  resources :companies, path: 'entreprises' do
+    resources :reviews, only: [:create, :destroy]
+  end
   resources :photos
 
   # Example of regular route:
