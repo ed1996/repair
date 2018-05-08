@@ -8,7 +8,7 @@
  
                <strong><%= message.user.fullname %></strong>
  
-               <span class="pull-right"><%= message.created_at %></span>
+               <span class="pull-right"><%= timeago_tag message.created_at, :lang=>:fr %></span>
  
                <br>
  
