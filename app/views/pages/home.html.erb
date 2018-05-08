@@ -1,4 +1,62 @@
-<h2>Permiere page</h2>
+<div class="row">
+    <div class="col-md-8">
+        <div class="text-center">
+            <h1>Trouvez le meilleur artisan près de chez vous !</h1>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<%= form_tag search_path, method: :get do %>
+    <div class="row">
+        <div class="col-md-6">
+            <%= text_field_tag :search, params[:search], placeholder: "Où ? dans quelle ville, adresse ?", class:"form-control" %>
+        </div>
+        <div class="col-md-4">
+            <%= select :category_artisan, params[:category_artisan], [["Plombier","Plombier"],["Serrurier","Serrurier"]], class:"form-control" %>
+        </div>
+        <div class="col-md-2">
+            <%= submit_tag "Recherche", class:"btn btn-primary" %>
+        </div>
+    </div>
+<% end %>
+<br><br><br>
+<%= form_tag searchcompany_path, method: :get do %>
+    <div class="row">
+        <div class="col-md-10">
+            <%= select :category_artisan, params[:category_artisan], [["Plombier","Plombier"],["Serrurier","Serrurier"]], prompt:"A sélectionner...", class:"form-control" %>
+        </div>
+        <div class="col-md-2">
+            <%= submit_tag "Recherche", class:"btn btn-primary" %>
+        </div>
+    </div>
+<% end %>
+
+<br>
+<hr>
+<br>
+
+<div class="row">
+    <div class="col-md-4">
+        <h4>Entreprises</h4>
+    </div>
+</div>
+
+<div class="row">
+    <% @companies.each do |company| %>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading preview">
+                    <%= image_tag company.photos[0].image.url(:medium) if company.photos.length > 0 %>
+                </div>
+                <div class="panel-body">
+                    <p class="home-link"><b><%= link_to company.listingname, company_path(company) %> - <%= link_to company.category_artisan, company_path(company) %></b></p>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
 
 <%= link_to 'Inscription', new_user_registration_path %>
 <%= link_to 'Connexion', new_user_session_path %>

@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :destroy]
   end
   resources :photos
+  
+  
+  get '/search' => 'pages#search'
+  get '/searchcompany' => 'pages#searchcompany'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
