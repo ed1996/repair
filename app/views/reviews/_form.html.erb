@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <%= form_for([@company, @company.reviews.new]) do |f| %>
     <div id="user_stars"></div>
     <%= f.text_field :comment %>
@@ -5,6 +6,7 @@
     <div class="actions">
         <%= f.submit %>
     </div>
+    <% end %>
 
 
 <% end %>
