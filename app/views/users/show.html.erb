@@ -27,7 +27,20 @@
         <div class="description row-space-3">
             <%= @user.description %>
             <br>
-            <p>Nombre d'annonce(s) : <%= @companies.length %></p>
+            <p>Nombre d'entreprise(s) : <%= @companies.length %></p>
+            <br>
+            <% @companies.each do |company| %>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading preview">
+                            <%= image_tag company.photos[0].image.url(:medium) if company.photos.length > 0 %>
+                        </div>
+                        <div class="panel-body">
+                            <p class="home-link"><b><%= link_to company.listingname, company_path(company) %> - <%= link_to company.category_artisan, company_path(company) %></b></p>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
         </div>
     </div>
 </div>
