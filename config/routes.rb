@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :create]
   end
   
+  resources :subscribers, only: [:new, :update, :index]
   
   get '/search' => 'pages#search'
   get '/searchcompany' => 'pages#searchcompany'

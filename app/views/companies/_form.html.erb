@@ -1,3 +1,6 @@
+<% if current_user.subscribed? %>
+
+
 <div class="panel panel-default">
     <div class="panel-heading">
         Vous êtes artisan ? Commencez à avoir des clients ! Enregistrez-vous maintenant !
@@ -74,3 +77,8 @@
         </div>
     </div>
 </div>
+
+    <% else %>
+    <%= link_to 'Devenez abonné', new_subscriber_path %>
+    <% end %>
+<br><br>
