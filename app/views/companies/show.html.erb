@@ -1,6 +1,465 @@
 <div class="panel panel-default">
     <div class="panel-body">
         
+        <!-- Slider
+================================================== -->
+<div class="listing-slider mfp-gallery-container margin-bottom-0">
+	<%= image_tag @photos[0].image.url(), class:"img-responsive" if @photos.length > 0 %>
+</div>
+        
+        	<div class="row sticky-wrapper">
+		<div class="col-lg-8 col-md-8 padding-right-30">
+
+			<!-- Titlebar -->
+			<div id="titlebar" class="listing-titlebar">
+				<div class="listing-titlebar-title">
+					<h2><%= @company.listingname %><span class="listing-tag"><%= @company.category_artisan %></span></h2>
+					<span>
+						<a href="#listing-location" class="listing-address">
+							<i class="fa fa-map-marker"></i>
+							<%= @company.address %>
+						</a>
+					</span>
+					<div class="star-rating" data-rating="5">
+						<div class="rating-counter"><a href="#listing-reviews">(<%= @reviews.count %> reviews)</a></div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Listing Nav -->
+			<div id="listing-nav" class="listing-nav-container">
+				<ul class="listing-nav">
+					<li><a href="#listing-overview" class="active">Description</a></li>
+					<li><a href="#listing-pricing-list">Pricing</a></li>
+					<li><a href="#listing-location">Location</a></li>
+					<li><a href="#listing-reviews">Reviews</a></li>
+					<li><a href="#add-review">Add Review</a></li>
+				</ul>
+			</div>
+			
+			<!-- Overview -->
+			<div id="listing-overview" class="listing-section">
+
+				<!-- Description -->
+
+				<p><%= @company.summary %></p>
+
+
+				<!-- Amenities -->
+				<h3 class="listing-desc-headline">Amenities</h3>
+				<ul class="listing-features checkboxes margin-top-0">
+					<li>Elevator in building</li>
+					<li>Friendly workspace</li>
+					<li>Instant Book</li>
+					<li>Wireless Internet</li>
+					<li>Free parking on premises</li>
+					<li>Free parking on street</li>
+				</ul>
+			</div>
+
+
+			<!-- Food Menu -->
+			<div id="listing-pricing-list" class="listing-section">
+				<h3 class="listing-desc-headline margin-top-70 margin-bottom-30">Pricing</h3>
+
+				<div class="show-more">
+					<div class="pricing-list-container">
+						
+						<!-- Food List -->
+						<h4>Burgers</h4>
+						<ul>
+							<li>
+								<h5>Classic Burger</h5>
+								<p>Beef, salad, mayonnaise, spicey relish, cheese</p>
+								<span>$6</span>
+							</li>
+							<li>
+								<h5>Cheddar Burger</h5>
+								<p>Cheddar cheese, lettuce, tomato, onion, dill pickles</p>
+								<span>$6</span>
+							</li>
+							<li>
+								<h5>Veggie Burger</h5>
+								<p>Panko crumbed and fried, grilled peppers and mushroom</p>
+								<span>$6</span>
+							</li>
+							<li>
+								<h5>Chicken Burger</h5>
+								<p>Cheese, chicken fillet, avocado, bacon, tomatoes, basil</p>
+								<span>$6</span>
+							</li>
+						</ul>
+
+						<!-- Food List -->
+						<h4>Drinks</h4>
+						<ul>
+							<li>
+								<h5>Frozen Shake</h5>
+								<span>$4</span>
+							</li>
+							<li>
+								<h5>Orange Juice</h5>
+								<span>$4</span>
+							</li>
+							<li>
+								<h5>Beer</h5>
+								<span>$4</span>
+							</li>
+							<li>
+								<h5>Water</h5>
+								<span>Free</span>
+							</li>
+						</ul>
+
+					</div>
+				</div>
+				<a href="#" class="show-more-button" data-more-title="Show More" data-less-title="Show Less"><i class="fa fa-angle-down"></i></a>
+			</div>
+			<!-- Food Menu / End -->
+
+		
+			<!-- Location -->
+			<div id="listing-location" class="listing-section">
+				<h3 class="listing-desc-headline margin-top-60 margin-bottom-30">Location</h3>
+
+				<div id="singleListingMap-container">
+					 <!-- Google maps -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div id="map"></div>
+                                <style>
+                                   #map {
+                                    height: 400px;
+                                    width: 100%;
+                                   }
+                                </style>
+                                
+                                 <script>
+                                      function initMap() {
+                                        var uluru = {lat: <%= @company.latitude %>, lng: <%= @company.longitude %>};
+                                        var map = new google.maps.Map(document.getElementById('map'), {
+                                          zoom: 15,
+                                          center: uluru
+                                        });
+                                        var marker = new google.maps.Marker({
+                                          position: uluru,
+                                          map: map
+                                        });
+                                      }
+                                </script>
+                                    <script async defer
+                                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkARqxRUMTTRU2qUZ9ew32CZGS2sRiwZ4&callback=initMap">
+                                    </script>
+                            </div>
+                        </div>
+                					<a href="#" id="streetView">Street View</a>
+                				</div>
+                			</div>
+				
+			<!-- Reviews -->
+			<div id="listing-reviews" class="listing-section">
+				<h3 class="listing-desc-headline margin-top-75 margin-bottom-20">Reviews <span>(<%= @reviews.count %>)</span></h3>
+
+				<div class="clearfix"></div>
+
+				<!-- Reviews -->
+				<% if @reviews.count == 0 %>
+                    <div class="text-center"><h4>Aucun commentaire.</h4></div>
+                <% else %>
+				<% @reviews.order("id DESC").each do |r| %>
+    				<section class="comments listing-reviews">
+    
+    					<ul>
+    						<li>
+    							<div class="avatar"><%= image_tag avatar_url(r.user), class:"img-circle avatar-medium" %></div>
+    							<div class="comment-content"><div class="arrow-comment"></div>
+    								<div class="comment-by"><strong><%= r.user.fullname %> <div id="stars_<%= r.id %>"></div></strong></span>
+    								<span class="pull-right">
+                                    <%= link_to "Supprimer mon commentaire", [@company, r], method: :delete, data: {confirm: "êtes-vous sûr ?"} if current_user && current_user == r.user %>
+                                    </span>
+    								</div>
+    								<div><%= r.created_at.strftime("%d.%m.%y") %></div>
+    								<div><%= r.comment %></div>
+    								<div class="review-images mfp-gallery-container">
+    									<a href="images/review-image-01.jpg" class="mfp-gallery"><img src="images/review-image-01.jpg" alt=""></a>
+    								</div>
+    								<!--<a href="#" class="rate-review"><i class="sl sl-icon-like"></i> Helpful Review <span>12</span></a>-->
+    							</div>
+    						</li>
+    					 </ul>
+    				</section>
+    				<script>
+                    $('#stars_<%= r.id %>').raty({
+                    path: '/assets',
+                    readOnly: true,
+                    score: <%= r.star %>
+                    });
+                    </script>
+                        <% end %>
+                    <% end %>
+                                    
+                
+				<!-- Pagination 
+				<div class="clearfix"></div>
+				<div class="row">
+					<div class="col-md-12">-->
+						<!-- Pagination 
+						<div class="pagination-container margin-top-30">
+							<nav class="pagination">
+								<ul>
+									<li><a href="#" class="current-page">1</a></li>
+									<li><a href="#">2</a></li>
+									<li><a href="#"><i class="sl sl-icon-arrow-right"></i></a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"></div>-->
+				<!-- Pagination / End -->
+			</div>
+
+
+			<!-- Add Review Box -->
+			<% if !@hasReview %>
+				<% if user_signed_in? %>
+				<%= form_for([@company, @company.reviews.new]) do |f| %>
+				<div id="add-review" class="add-review-box">
+	
+					<!-- Add Review -->
+					<h3 class="listing-desc-headline margin-bottom-20">Ajouter un avis</h3>
+					
+					<span class="leave-rating-title">Votre note pour cet artisan</span>
+					
+					<!-- Rating / Upload Button -->
+				     <div id="user_stars"></div>
+		
+					<!-- Review Comment -->
+					<form id="add-comment" class="add-comment">
+						<fieldset>
+	
+	
+							<div>
+								<label>Review:</label>
+								<%= f.text_field :comment %>
+								 <%= f.hidden_field :company_id, value: @company.id %>
+							</div>
+	
+						</fieldset>
+	
+						<div class="actions">
+	                        <%= f.submit %>
+	                    </div>
+						<div class="clearfix"></div>
+					</form>
+	
+				</div>
+				<!-- Add Review Box / End -->
+				   <% end %>
+	
+	
+				<% end %>
+			<% end %>
+
+		</div>
+
+
+		<!-- Sidebar
+		================================================== -->
+		<div class="col-lg-4 col-md-4 margin-top-75 sticky">
+
+				
+			<!-- Verified Badge -->
+			<div class="verified-badge with-tip" data-tip-content="Listing has been verified and belongs the business owner or manager.">
+				<i class="fas fa-check"></i> Entreprise vérifiée
+			</div>
+
+			<!-- Book Now 
+			<div class="boxed-widget booking-widget margin-top-35">
+				<h3><i class="fa fa-calendar-check-o "></i> Book a Table</h3>
+				<div class="row with-forms  margin-top-0">
+
+			
+					<div class="col-lg-6 col-md-12">
+						<input type="text" id="booking-date" data-lang="en" data-large-mode="true" data-large-default="true" data-min-year="2017" data-max-year="2020" data-lock="from">
+					</div>
+
+				
+					<div class="col-lg-6 col-md-12">
+						<input type="text" id="booking-time" value="9:00 am">
+					</div>
+
+					
+					<div class="col-lg-12">
+						<div class="panel-dropdown">
+							<a href="#">Guests <span class="qtyTotal" name="qtyTotal">1</span></a>
+							<div class="panel-dropdown-content">
+
+							
+								<div class="qtyButtons">
+									<div class="qtyTitle">Adults</div>
+									<input type="text" name="qtyInput" value="1">
+								</div>
+
+								<div class="qtyButtons">
+									<div class="qtyTitle">Childrens</div>
+									<input type="text" name="qtyInput" value="0">
+								</div>
+
+							</div>
+						</div>
+					</div>
+				
+
+				</div>
+			
+				<a href="pages-booking.html" class="button book-now fullwidth margin-top-5">Book Now</a>
+			</div>-->
+			<!-- Book Now / End -->
+		
+
+			<!-- Opening Hours -->
+			<div class="boxed-widget opening-hours margin-top-35">
+				<div class="listing-badge now-open">Now Open</div>
+				<h3><i class="far fa-clock"></i></i> Opening Hours</h3>
+				<ul>
+					<li>Monday <span>9 AM - 5 PM</span></li>
+					<li>Tuesday <span>9 AM - 5 PM</span></li>
+					<li>Wednesday <span>9 AM - 5 PM</span></li>
+					<li>Thursday <span>9 AM - 5 PM</span></li>
+					<li>Friday <span>9 AM - 5 PM</span></li>
+					<li>Saturday <span>9 AM - 3 PM</span></li>
+					<li>Sunday <span>Closed</span></li>
+				</ul>
+			</div>
+			<!-- Opening Hours / End -->
+
+
+			<!-- Contact -->
+			<div class="boxed-widget margin-top-35">
+				<div class="hosted-by-title">
+					<h4><span>Entreprise de </span> <a href="pages-user-profile.html"><%= link_to @company.user.fullname, user_path(@company.user) %></a></h4>
+					<%= image_tag avatar_url(@company.user), class:"img-circle avatar-large hosted-by-avatar" %>
+				</div>
+				<ul class="listing-details-sidebar">
+					<li><i class="fas fa-phone"></i><%= @company.phone %></li>
+					<!-- <li><i class="sl sl-icon-globe"></i> <a href="#">http://example.com</a></li> -->
+					<li><i class="far fa-envelope"></i> <a href="#"><%= @company.user.email %></a></li>
+				</ul>
+
+				<ul class="listing-details-sidebar social-profiles">
+					<li><a href="#" class="facebook-profile"><i class="fa fa-facebook-square"></i> Facebook</a></li>
+					<li><a href="#" class="twitter-profile"><i class="fa fa-twitter"></i> Twitter</a></li>
+					<!-- <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> -->
+				</ul>
+
+				<!-- Reply to review popup -->
+				<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+					<div class="small-dialog-header">
+						<h3>Send Message</h3>
+					</div>
+					<div class="message-reply margin-top-0">
+						<textarea cols="40" rows="3" placeholder="Your message to Tom"></textarea>
+						<button class="button">Send Message</button>
+					</div>
+				</div>
+
+				<a href="#small-dialog" class="send-message-to-owner button popup-with-zoom-anim"><i class="far fa-envelope-open"></i> Send Message</a>
+			</div>
+			<!-- Contact / End-->
+
+
+			<!-- Share / Like -->
+			<div class="listing-share margin-top-40 margin-bottom-40 no-border">
+				<button class="like-button"><span class="like-icon"></span> Bookmark this listing</button> 
+				<span>159 people bookmarked this place</span>
+
+					<!-- Share Buttons -->
+					<ul class="share-buttons margin-top-40 margin-bottom-0">
+						<li><a class="fb-share" href="#"><i class="fa fa-facebook"></i> Share</a></li>
+						<li><a class="twitter-share" href="#"><i class="fa fa-twitter"></i> Tweet</a></li>
+						<li><a class="gplus-share" href="#"><i class="fa fa-google-plus"></i> Share</a></li>
+						<!-- <li><a class="pinterest-share" href="#"><i class="fa fa-pinterest-p"></i> Pin</a></li> -->
+					</ul>
+					<div class="clearfix"></div>
+			</div>
+
+		</div>
+		<!-- Sidebar / End -->
+
+	</div>
+</div>
+
+
+<!-- Footer
+================================================== -->
+<div id="footer" class="margin-top-15">
+	<!-- Main -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-sm-6">
+				<%= image_tag "logo.png", class: "footer-logo" %>
+				<br><br>
+				<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
+			</div>
+
+			<div class="col-md-4 col-sm-6 ">
+				<h4>Helpful Links</h4>
+				<ul class="footer-links">
+					<li><a href="#">Login</a></li>
+					<li><a href="#">Sign Up</a></li>
+					<li><a href="#">My Account</a></li>
+					<li><a href="#">Add Listing</a></li>
+					<li><a href="#">Pricing</a></li>
+					<li><a href="#">Privacy Policy</a></li>
+				</ul>
+
+				<ul class="footer-links">
+					<li><a href="#">FAQ</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Our Partners</a></li>
+					<li><a href="#">How It Works</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>		
+
+			<div class="col-md-3  col-sm-12">
+				<h4>Contact Us</h4>
+				<div class="text-widget">
+					<span>12345 Little Lonsdale St, Melbourne</span> <br>
+					Phone: <span>(123) 123-456 </span><br>
+					E-Mail:<span> <a href="#">office@example.com</a> </span><br>
+				</div>
+
+				<ul class="social-icons margin-top-20">
+					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+					<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
+					<li><a class="vimeo" href="#"><i class="icon-vimeo"></i></a></li>
+				</ul>
+
+			</div>
+
+		</div>
+		
+		<!-- Copyright -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="copyrights">© 2017 Listeo. All Rights Reserved.</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<!-- Footer / End -->
+
+
+<!-- Back To Top Button -->
+<div id="backtotop"><a href="#"></a></div>
+
+        <!-- ligne de separation des parties -->
         
         <!-- Photo principale de l'entreprise -->
         <div class="row">
@@ -165,5 +624,11 @@
         path: '/assets',
         readOnly: true,
         score: <%= @company.average_rating %>
+    });
+    
+    $('#user_stars').raty({
+        path: '/assets',
+        scoreName: 'review[star]',
+        score: 1
     });
 </script>

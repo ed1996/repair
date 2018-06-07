@@ -1,3 +1,200 @@
+<!-- Banner
+================================================== -->
+<div class="main-search-container" data-background-image="/assets/main-search-background-01.jpg">
+	<div class="main-search-inner">
+	    <!--<img src="/assets/main-search-background-01.jpg" />-->
+
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Trouvez votre artisan pour votre besoin</h2>
+					<h4>Explorer l'ensemble des entreprises artisanales dans différentes ville</h4>
+                
+                <%= form_tag search_path, method: :get do %>
+					<div class="main-search-input">
+
+						<div class="main-search-input-item location">
+							<div id="autocomplete-container">
+								<!--<input id="autocomplete-input" type="text" placeholder="Location">-->
+								<%= text_field_tag :search, params[:search], placeholder: "Où ? dans quelle ville, adresse ?", class:"form-control", id:"autocomplete-input" %>
+							</div>
+							<a href="#"><i class="fa fa-map-marker"></i></a>
+						</div>
+
+						<div class="main-search-input-item">
+							<!--<select data-placeholder="All Categories" class="chosen-select" >
+								<option>All Categories</option>	
+								<option>Shops</option>
+								<option>Hotels</option>
+								<option>Restaurants</option>
+								<option>Fitness</option>
+								<option>Events</option>
+							</select>-->
+							 <%= select :category_artisan, params[:category_artisan], [["Plombier","Plombier"],["Serrurier","Serrurier"]], class:"chosen-select" %>
+						</div>
+
+						<!--<button class="button" onclick="window.location.href='listings-half-screen-map-list.html'">Search</button>-->
+                        <%= submit_tag "Recherche", class:"button" %>
+					</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+<!-- Fullwidth Section -->
+<section class="fullwidth margin-top-65 padding-top-75 padding-bottom-70" data-background-color="#f8f8f8">
+
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-12">
+				<h3 class="headline centered margin-bottom-45">
+					Most Visited Places
+					<span>Discover top-rated local businesses</span>
+				</h3>
+			</div>
+			
+			
+			<% @companies.each do |company| %>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading preview">
+                    <%= image_tag company.photos[0].image.url(:medium) if company.photos.length > 0 %>
+                </div>
+                <div class="panel-body">
+                    <p class="home-link"><b><%= link_to company.listingname, company_path(company) %> - <%= link_to company.category_artisan, company_path(company) %></b></p>
+                </div>
+            </div>
+        </div>
+    <% end %>
+			
+
+		</div>
+	</div>
+
+</section>
+<!-- Fullwidth Section / End -->
+
+<!-- Info Section -->
+<div class="container">
+
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<h2 class="headline centered margin-top-80">
+				Le meilleur artisan pour votre dépannage 
+				<span class="margin-top-25">Explorer l'ensemble des artisans présents sur la plateforme.  Choisissez celui qui vous convient.</span>
+			</h2>
+		</div>
+	</div>
+
+	<div class="row icons-container">
+		<!-- Stage -->
+		<div class="col-md-4">
+			<div class="icon-box-2 with-line">
+				<i class="fas fa-street-view"></i>
+				<h3>Trouvez un artisan pour votre problème</h3>
+				<p>Toutes les catégories artisanales sont présentes sur la plateforme.</p>
+			</div>
+		</div>
+
+		<!-- Stage -->
+		<div class="col-md-4">
+			<div class="icon-box-2 with-line">
+				<i class="fas fa-comments"></i>
+				<h3>Contacter l'artisan</h3>
+				<p>Vous pouvez échanger avec les artisans sur la plateforme et également voir les feedback des autres utilisateurs.</p>
+			</div>
+		</div>
+
+		<!-- Stage -->
+		<div class="col-md-4">
+			<div class="icon-box-2">
+				<i class="far fa-address-book"></i>
+				<h3>Faite une prise de rendez-vous</h3>
+				<p>Prenez rendez-vous avec l'artisan que vous voulez et laisser un avis après service rendu.</p>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- Info Section / End -->
+
+<br><br>
+<!-- Footer
+================================================== -->
+<div id="footer" class="sticky-footer">
+	<!-- Main -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-sm-6">
+				<img class="footer-logo" src="/assets/logo.png" alt="">
+				<br><br>
+				<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
+			</div>
+
+			<div class="col-md-4 col-sm-6 ">
+				<h4>Helpful Links</h4>
+				<ul class="footer-links">
+					<li><a href="#">Login</a></li>
+					<li><a href="#">Sign Up</a></li>
+					<li><a href="#">My Account</a></li>
+					<li><a href="#">Add Listing</a></li>
+					<li><a href="#">Pricing</a></li>
+					<li><a href="#">Privacy Policy</a></li>
+				</ul>
+
+				<ul class="footer-links">
+					<li><a href="#">FAQ</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Our Partners</a></li>
+					<li><a href="#">How It Works</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>		
+
+			<div class="col-md-3  col-sm-12">
+				<h4>Contact Us</h4>
+				<div class="text-widget">
+					<span>12345 Little Lonsdale St, Melbourne</span> <br>
+					Phone: <span>(123) 123-456 </span><br>
+					E-Mail:<span> <a href="#">office@example.com</a> </span><br>
+				</div>
+
+				<ul class="social-icons margin-top-20">
+					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+					<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
+					<li><a class="vimeo" href="#"><i class="icon-vimeo"></i></a></li>
+				</ul>
+
+			</div>
+
+		</div>
+		
+		<!-- Copyright -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="copyrights">© 2017 Listeo. All Rights Reserved.</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<!-- Footer / End -->
+
+
+<!-- Back To Top Button -->
+<div id="backtotop"><a href="#"></a></div>
+
+
+
+
 <div class="row">
     <div class="col-md-8">
         <div class="text-center">
@@ -62,3 +259,25 @@
 <%= link_to 'Connexion', new_user_session_path %>
 <%= link_to 'Deconnexion', destroy_user_session_path, method: :delete %>
 
+!-- Google Autocomplete -->
+<script>
+  function initAutocomplete() {
+    var input = document.getElementById('autocomplete-input');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+
+    autocomplete.addListener('place_changed', function() {
+      var place = autocomplete.getPlace();
+      if (!place.geometry) {
+        window.alert("No details available for input: '" + place.name + "'");
+        return;
+      }
+    });
+
+	if ($('.main-search-input-item')[0]) {
+	    setTimeout(function(){ 
+	        $(".pac-container").prependTo("#autocomplete-container");
+	    }, 300);
+	}
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"></script>

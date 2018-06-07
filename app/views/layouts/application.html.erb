@@ -5,6 +5,10 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <!-- CSS
+================================================== -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/colors/main.css" id="colors">
   
   <%= favicon_link_tag 'favicon.ico' %>
   
@@ -14,7 +18,7 @@
 
 <%= render 'shared/message' %>
 
-<div class="container"><%= yield %></div>
+<%= yield %>
 
 </body>
 </html>

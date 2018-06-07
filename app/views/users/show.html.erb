@@ -1,3 +1,191 @@
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="gradient">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="user-profile-titlebar">
+					<div class="user-profile-avatar"><%= image_tag avatar_url(@user), class:"avatar-full" %></div>
+					<div class="user-profile-name">
+						<h2><%= @user.fullname %></h2>
+						<div class="star-rating" data-rating="5">
+							<div class="rating-counter">Nombre d'entreprise(s) : <%= @companies.length %></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- Content
+================================================== -->
+<div class="container">
+	<div class="row sticky-wrapper">
+
+
+		<!-- Sidebar
+		================================================== -->
+		<div class="col-lg-4 col-md-4 margin-top-0">
+				
+			<!-- Verified Badge -->
+			<div class="verified-badge with-tip" data-tip-content="Account has been verified and belongs to the person or organization represented.">
+				<i class="fas fa-check"></i> Verified Account
+			</div>
+
+			<!-- Contact -->
+			<div class="boxed-widget margin-top-30 margin-bottom-50">
+				<h3>Contact</h3>
+				<ul class="listing-details-sidebar">
+					<li><i class="far fa-envelope-open"></i><%= @user.email %></li>
+				</ul>
+
+				<ul class="listing-details-sidebar social-profiles">
+					<li><i class="fab fa-facebook-square"></i> Facebook</li>
+					<li><i class="fab fa-twitter-square"></i> Twitter</li>
+					<!-- <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> -->
+				</ul>
+
+				<% if current_user != @user %>
+                    <div class="row-space-2">
+                        <%= link_to "Envoyer un message", conversations_path(sender_id: current_user.id,
+                        recipient_id: @user.id), method: 'post', class:"send-message-to-owner button popup-with-zoom-anim" %>
+                    </div>
+                <% end %>
+
+			</div>
+			<!-- Contact / End-->
+
+		</div>
+		<!-- Sidebar / End -->
+
+
+		<!-- Content
+		================================================== -->
+		<div class="col-lg-8 col-md-8 padding-left-30">
+
+			<h3 class="margin-top-0 margin-bottom-40">Enteprise(s) de <%= @user.fullname %></h3>
+
+			<!-- Listings Container -->
+			<div class="row">
+				<% if @companies.length == 0 %>
+				<p>Aucunes entreprises enregistrées</p>
+				<% else %>
+			    
+			    <!-- Listing Item -->
+			    <% @companies.each do |company| %>
+					<div class="col-lg-12 col-md-12">
+						<div class="listing-item-container list-layout">
+							<a href="<%= company_path(company) %>" class="listing-item">
+								
+								<!-- Image -->
+								<div class="listing-item-image">
+									<%= image_tag company.photos[0].image.url(:medium) if company.photos.length > 0 %>
+									<span class="tag"><%= company.category_artisan %></span>
+								</div>
+								
+								<!-- Content -->
+								<div class="listing-item-content">
+									<div class="listing-badge now-open">Now Open</div>
+	
+									<div class="listing-item-inner">
+										<h3><%= company.listingname %></h3>
+										<span><%= company.address %></span>
+										<div class="star-rating" data-rating="3.5">
+											<div class="rating-counter">Nombre d'avis : <%= company.reviews.length %></div>
+										</div>
+									</div>
+	
+									<!--<span class="like-icon"></span>-->
+								</div>
+							</a>
+						</div>
+					</div>
+				<% end %>
+				<% end %>
+				<!-- Listing Item / End -->
+
+				
+			
+
+
+		</div>
+
+	</div>
+</div>
+
+
+<!-- Footer
+================================================== -->
+<div id="footer" class="margin-top-65">
+	<!-- Main -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-sm-6">
+				<img class="footer-logo" src="images/logo.png" alt="">
+				<br><br>
+				<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
+			</div>
+
+			<div class="col-md-4 col-sm-6 ">
+				<h4>Helpful Links</h4>
+				<ul class="footer-links">
+					<li><a href="#">Login</a></li>
+					<li><a href="#">Sign Up</a></li>
+					<li><a href="#">My Account</a></li>
+					<li><a href="#">Add Listing</a></li>
+					<li><a href="#">Pricing</a></li>
+					<li><a href="#">Privacy Policy</a></li>
+				</ul>
+
+				<ul class="footer-links">
+					<li><a href="#">FAQ</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Our Partners</a></li>
+					<li><a href="#">How It Works</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>		
+
+			<div class="col-md-3  col-sm-12">
+				<h4>Contact Us</h4>
+				<div class="text-widget">
+					<span>12345 Little Lonsdale St, Melbourne</span> <br>
+					Phone: <span>(123) 123-456 </span><br>
+					E-Mail:<span> <a href="#">office@example.com</a> </span><br>
+				</div>
+
+				<ul class="social-icons margin-top-20">
+					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+					<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
+					<li><a class="vimeo" href="#"><i class="icon-vimeo"></i></a></li>
+				</ul>
+
+			</div>
+
+		</div>
+		
+		<!-- Copyright -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="copyrights">© 2017 Listeo. All Rights Reserved.</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
+<!-- Footer / End -->
+
+
+
+
 <div class="row">
     <div class="col-md-3">
         <%= image_tag avatar_url(@user), class:"avatar-full" %>
