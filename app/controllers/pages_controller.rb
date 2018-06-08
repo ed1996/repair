@@ -3,6 +3,9 @@ class PagesController < ApplicationController
         @companies = Company.order("RANDOM()").limit(3)
     end
     
+    def contact
+    end
+    
     def search
         if params[:search].present? && params[:search].strip != "" && params[:category_artisan].present? 
            session[:myrepair_search] = params[:search] 

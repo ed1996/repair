@@ -22,13 +22,13 @@
 
 						<!-- Headline -->
 						<div class="add-listing-headline">
-							<h3><i class="sl sl-icon-doc"></i> Informations de bases</h3>
+							<h3><i class="far fa-file-alt"></i> Informations de bases</h3>
 						</div>
 
 						<!-- Title -->
 						<div class="row with-forms">
 							<div class="col-md-12">
-								<h5>Le nom de votre entreprise <i class="tip" data-tip-content="Name of your business"></i></h5>
+								<h5>Le nom de votre entreprise </h5>
 								<%= f.text_field :listingname, placeholder:"Nom de l'entreprise", class:"form-control" %>
 							</div>
 						</div>
@@ -61,7 +61,7 @@
 
 						<!-- Headline -->
 						<div class="add-listing-headline">
-							<h3><i class="sl sl-icon-location"></i> Location</h3>
+							<h3><i class="far fa-compass"></i> Location</h3>
 						</div>
 
 						<div class="submit-section">
@@ -89,17 +89,18 @@
 
 						<!-- Headline -->
 						<div class="add-listing-headline">
-							<h3><i class="sl sl-icon-picture"></i> Gallery</h3>
+							<h3><i class="far fa-images"></i> Gallery</h3>
 						</div>
 
 						<!-- Dropzone -->
 						<div class="submit-section">
 							<span class="btn btn-default btn-file">
-                                <i class="fa fa-cloud-upload fa-lg"></i> Téléchargez vos photos !
+                                <i class="fas fa-camera"></i></i> Téléchargez vos photos !
                                 <%= file_field_tag "images[]", type: :file, mutliple: true %>
                             </span>
+                            <div id="photos"><%= render 'photos/list' %></div>
 						</div>
-
+                        
 					</div>
 					<!-- Section / End -->
 
@@ -109,7 +110,7 @@
 
 						<!-- Headline -->
 						<div class="add-listing-headline">
-							<h3><i class="sl sl-icon-docs"></i> Details</h3>
+							<h3><i class="fas fa-align-left"></i> Details</h3>
 						</div>
 
 						<!-- Description -->
@@ -148,19 +149,19 @@
 
 							<!-- Phone -->
 							<div class="col-md-4">
-								<h5 class="fb-input"><i class="fa fa-facebook-square"></i> Facebook <span>(optional)</span></h5>
+								<h5 class="fb-input"><i class="fab fa-facebook-square"></i> Facebook <span>(optional)</span></h5>
 								<input type="text" placeholder="https://www.facebook.com/">
 							</div>
 
 							<!-- Website -->
 							<div class="col-md-4">
-								<h5 class="twitter-input"><i class="fa fa-twitter"></i> Twitter <span>(optional)</span></h5>
+								<h5 class="twitter-input"><i class="fab fa-twitter-square"></i> Twitter <span>(optional)</span></h5>
 								<input type="text" placeholder="https://www.twitter.com/">
 							</div>
 
 							<!-- Email Address -->
 							<div class="col-md-4">
-								<h5 class="gplus-input"><i class="fa fa-google-plus"></i> Google Plus <span>(optional)</span></h5>
+								<h5 class="gplus-input"><i class="fab fa-google-plus"></i> Google Plus <span>(optional)</span></h5>
 								<input type="text" placeholder="https://plus.google.com">
 							</div>
 
@@ -208,7 +209,7 @@
 						
 						<!-- Headline -->
 						<div class="add-listing-headline">
-							<h3><i class="sl sl-icon-clock"></i> Opening Hours</h3>
+							<h3><i class="far fa-clock"></i> Opening Hours</h3>
 							<!-- Switcher -->
 							<label class="switch"><input type="checkbox" checked><span class="slider round"></span></label>
 						</div>
@@ -390,7 +391,7 @@
 						
 						<!-- Headline -->
 						<div class="add-listing-headline">
-							<h3><i class="sl sl-icon-book-open"></i> Prix</h3>
+							<h3><i class="far fa-money-bill-alt"></i> Prix</h3>
 						</div>
 
 

@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   
   get '/search' => 'pages#search'
   get '/searchcompany' => 'pages#searchcompany'
+  
+  get '/contact' => 'pages#contact'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
