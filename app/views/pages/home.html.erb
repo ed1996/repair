@@ -67,6 +67,7 @@
                 </div>
                 <div class="panel-body">
                     <p class="home-link"><b><%= link_to company.listingname, company_path(company) %> - <%= link_to company.category_artisan, company_path(company) %></b></p>
+                    <p><%= company.reviews.count %></p>
                 </div>
             </div>
         </div>
