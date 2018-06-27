@@ -1,6 +1,6 @@
 <!-- Banner
 ================================================== -->
-<div class="main-search-container" data-background-image="/assets/main-search-background-01.jpg">
+<div class="main-search-container" data-background-image="/assets/main-search-background-10.jpg">
 	<div class="main-search-inner">
 	    <!--<img src="/assets/main-search-background-01.jpg" />-->
 
@@ -37,6 +37,17 @@
                         <%= submit_tag "Recherche", class:"button" %>
 					</div>
 					<% end %>
+					<br><br>
+					<%= form_tag searchcompany_path, method: :get do %>
+    <div class="row">
+        <div class="col-md-10">
+            <%= select :category_artisan, params[:category_artisan], [["Plombier","Plombier"],["Serrurier","Serrurier"]], prompt:"A sélectionner...", class:"form-control" %>
+        </div>
+        <div class="col-md-2">
+            <%= submit_tag "Recherche", class:"btn btn-primary" %>
+        </div>
+    </div>
+<% end %>
 				</div>
 			</div>
 		</div>
@@ -53,8 +64,8 @@
 
 			<div class="col-md-12">
 				<h3 class="headline centered margin-bottom-45">
-					Most Visited Places
-					<span>Discover top-rated local businesses</span>
+				Vous avez un dépannage à faire
+					<span>Trouver le meilleur artisan pour votre besoin...</span>
 				</h3>
 			</div>
 			
@@ -67,7 +78,7 @@
                 </div>
                 <div class="panel-body">
                     <p class="home-link"><b><%= link_to company.listingname, company_path(company) %> - <%= link_to company.category_artisan, company_path(company) %></b></p>
-                    <p><%= company.reviews.count %></p>
+                    <p>Nombre d'avis : (<%= company.reviews.count %>)</p>
                 </div>
             </div>
         </div>
@@ -79,6 +90,20 @@
 
 </section>
 <!-- Fullwidth Section / End -->
+
+<div class="banner-breadcum section">
+<div class="row">
+		<div class="breadcrumb-image" style="background-image: url(https://images.pexels.com/photos/544117/pexels-photo-544117.jpeg?w=940&h=650&auto=compress&cs=tinysrgb);">
+    <div class="container text-center">
+        <h1>Commment ça fonctionne ?</h1>
+            <div class="breadcrumbs_path">
+                <a href="#">FAQ</a>
+            </div>      
+    </div>
+</div>
+	</div>
+</div>
+
 
 <!-- Info Section -->
 <div class="container">
@@ -123,8 +148,80 @@
 
 </div>
 <!-- Info Section / End -->
-
 <br><br>
+
+<div id="testimonial4" class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x" data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
+		<div class="testimonial4_header">
+			<h4>Ce que les artisans disent de la plateforme</h4>
+		</div>
+		<ol class="carousel-indicators">
+			<li data-target="#testimonial4" data-slide-to="0" class="active"></li>
+			<li data-target="#testimonial4" data-slide-to="1"></li>
+			<li data-target="#testimonial4" data-slide-to="2"></li>
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<div class="testimonial4_slide">
+						<%= image_tag 'ivan', class:"img-circle img-responsive" %>
+					<p>Lorem ipsum dolor sit amet adipiscing elit am nibh unc varius facilisis eros ed erat in in velit quis arcu ornare laoreet urabitur.</p>
+					<h4>Thierry Wieczorek</h4>
+				</div>
+			</div>
+			<div class="item">
+				<div class="testimonial4_slide">
+					<%= image_tag 'thierry', class:"img-circle img-responsive" %>
+					<!--<img src="http://via.placeholder.com/100x100" class="img-circle img-responsive" />-->
+					<p>Lorem ipsum dolor sit amet adipiscing elit am nibh unc varius facilisis eros ed erat in in velit quis arcu ornare laoreet urabitur.</p>
+					<h4>Stéphane Michaud</h4>
+				</div>
+			</div>
+			<div class="item">
+				<div class="testimonial4_slide">
+					<%= image_tag 'stephane', class:"img-circle img-responsive" %>
+					<p>J'ai décidé de me mettre en indépendant et pour trouver mes clients je passe par MyRepair qui me permet de trouver des clients pour des dépannages.</p>
+					<h4>Rodrigue Ojeda</h4>
+				</div>
+			</div>
+		</div>
+		<a class="left carousel-control" href="#testimonial4" role="button" data-slide="prev">
+			<span class="fa fa-chevron-left"></span>
+		</a>
+		<a class="right carousel-control" href="#testimonial4" role="button" data-slide="next">
+			<span class="fa fa-chevron-right"></span>
+		</a>
+	</div>
+	
+	
+	
+	
+	<!-- Parallax -->
+<div class="parallax"
+	data-background="images/slider-bg-02.jpg"
+	data-color="#36383e"
+	data-color-opacity="0.6"
+	data-img-width="800"
+	data-img-height="505">
+
+	<!-- Infobox -->
+	<div class="text-content white-font">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-6 col-sm-8">
+					<h2>Développer votre clientèle</h2>
+					<p>Vous êtes un artisan et vous avez besoin de nouveaux clients. Inscrivez-vous sur l'annuaire et soyez présent sur le plus important annuaire des artisans qui compte plus de 10 000 visites par mois.</p>
+					<a href="listings-list-with-sidebar.html" class="button margin-top-25">Inscrivez-vous</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Infobox / End -->
+
+</div>
+<!-- Parallax / End -->
+
 <!-- Footer
 ================================================== -->
 <div id="footer" class="sticky-footer">
@@ -134,35 +231,30 @@
 			<div class="col-md-5 col-sm-6">
 				<img class="footer-logo" src="/assets/logo.png" alt="">
 				<br><br>
-				<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
+				<p>Annuaire pour les artisans de France qui cherchent à développer leurs clientèles et pour les personnes qui ont besoin du meilleur artisan pour réaliser le meilleur dépannage.</p>
 			</div>
 
 			<div class="col-md-4 col-sm-6 ">
-				<h4>Helpful Links</h4>
+				<h4>Liens utiles</h4>
 				<ul class="footer-links">
-					<li><a href="#">Login</a></li>
-					<li><a href="#">Sign Up</a></li>
-					<li><a href="#">My Account</a></li>
-					<li><a href="#">Add Listing</a></li>
-					<li><a href="#">Pricing</a></li>
-					<li><a href="#">Privacy Policy</a></li>
+					<li><a href="<%= new_user_session_path %>">Connexion</a></li>
+					<li><a href="<%= new_user_registration_path %>">Inscription</a></li>
+					<li><a href="<%= politique_de_confidentialite_path %>">Politique de confidentialité</a></li>
 				</ul>
 
 				<ul class="footer-links">
 					<li><a href="#">FAQ</a></li>
-					<li><a href="#">Blog</a></li>
-					<li><a href="#">Our Partners</a></li>
-					<li><a href="#">How It Works</a></li>
-					<li><a href="#">Contact</a></li>
+					<li><a href="<%= blog_path %>">Blog</a></li>
+					<li><a href="<%= contact_path %>">Contact</a></li>
 				</ul>
 				<div class="clearfix"></div>
 			</div>		
 
 			<div class="col-md-3  col-sm-12">
-				<h4>Contact Us</h4>
+				<h4>Contactez-nous</h4>
 				<div class="text-widget">
-					<span>12345 Little Lonsdale St, Melbourne</span> <br>
-					Phone: <span>(123) 123-456 </span><br>
+				<!--	<span>12345 Little Lonsdale St, Melbourne</span> <br>
+					Phone: <span>(123) 123-456 </span><br>-->
 					E-Mail:<span> <a href="#">office@example.com</a> </span><br>
 				</div>
 
@@ -180,7 +272,7 @@
 		<!-- Copyright -->
 		<div class="row">
 			<div class="col-md-12">
-				<div class="copyrights">© 2017 Listeo. All Rights Reserved.</div>
+				<div class="copyrights">© 2018 MyRepair. Tous droits réservés.</div>
 			</div>
 		</div>
 
@@ -193,74 +285,7 @@
 <!-- Back To Top Button -->
 <div id="backtotop"><a href="#"></a></div>
 
-
-
-
-<div class="row">
-    <div class="col-md-8">
-        <div class="text-center">
-            <h1>Trouvez le meilleur artisan près de chez vous !</h1>
-        </div>
-    </div>
-</div>
-
-<br>
-
-<%= form_tag search_path, method: :get do %>
-    <div class="row">
-        <div class="col-md-6">
-            <%= text_field_tag :search, params[:search], placeholder: "Où ? dans quelle ville, adresse ?", class:"form-control" %>
-        </div>
-        <div class="col-md-4">
-            <%= select :category_artisan, params[:category_artisan], [["Plombier","Plombier"],["Serrurier","Serrurier"]], class:"form-control" %>
-        </div>
-        <div class="col-md-2">
-            <%= submit_tag "Recherche", class:"btn btn-primary" %>
-        </div>
-    </div>
-<% end %>
-<br><br><br>
-<%= form_tag searchcompany_path, method: :get do %>
-    <div class="row">
-        <div class="col-md-10">
-            <%= select :category_artisan, params[:category_artisan], [["Plombier","Plombier"],["Serrurier","Serrurier"]], prompt:"A sélectionner...", class:"form-control" %>
-        </div>
-        <div class="col-md-2">
-            <%= submit_tag "Recherche", class:"btn btn-primary" %>
-        </div>
-    </div>
-<% end %>
-
-<br>
-<hr>
-<br>
-
-<div class="row">
-    <div class="col-md-4">
-        <h4>Entreprises</h4>
-    </div>
-</div>
-
-<div class="row">
-    <% @companies.each do |company| %>
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading preview">
-                    <%= image_tag company.photos[0].image.url(:medium) if company.photos.length > 0 %>
-                </div>
-                <div class="panel-body">
-                    <p class="home-link"><b><%= link_to company.listingname, company_path(company) %> - <%= link_to company.category_artisan, company_path(company) %></b></p>
-                </div>
-            </div>
-        </div>
-    <% end %>
-</div>
-
-<%= link_to 'Inscription', new_user_registration_path %>
-<%= link_to 'Connexion', new_user_session_path %>
-<%= link_to 'Deconnexion', destroy_user_session_path, method: :delete %>
-
-!-- Google Autocomplete -->
+<!-- Google Autocomplete -->
 <script>
   function initAutocomplete() {
     var input = document.getElementById('autocomplete-input');

@@ -354,6 +354,11 @@ input[type="checkbox"]:checked:before {
  
  .panel-heading.preview img {
   width: 100%;
+  height: 250px;
+ }
+ .carousel-inner img {
+ 	width: 100%;
+ 	height: 350px !important;
  }
  
  
@@ -2206,7 +2211,7 @@ em.mm-counter+a.mm-fullsubopen+span {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: 50%;
-	background: image-url('main-search-background-01.jpg') no-repeat;
+	background: image-url('main-search-background-10.jpg') no-repeat;
 	height: 620px;
 	z-index: 9;
 }
@@ -3784,6 +3789,20 @@ button.fs-map-btn.button {
 	transition: 0.3s;
 	display: block;
 }
+/* unverified Badge */
+.unverified-badge {
+	background-color: #F91949;
+	border-radius: 4px;
+	color: #fff;
+	text-align: center;
+	padding: 12px 20px;
+	font-size: 17px;
+	font-weight: 500;
+	cursor: help;
+	position: relative;
+	transition: 0.3s;
+	display: block;
+}
 
 .verified-badge i {
 	font-size: 22px;
@@ -5037,7 +5056,7 @@ a.send-message-to-owner.button {
 	width: 19px;
 	height: 19px;
 	position: relative;
-	content: "\f00c";
+	//content: "\f00c";
 	font-family: "FontAwesome";
 	font-size: 12px;
 	color: #fff;
@@ -5798,6 +5817,7 @@ a.rate-review:hover {
 ------------------------------------- */
 .coming-soon-page {
 	height: 100vh;
+	background: image-url('main-search-background-01.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 50%;
@@ -14603,3 +14623,239 @@ img.mfp-img {
 	#reset a.button:hover { color: #333; background-color: #fff; }
 
 	@media only screen and (max-width: 1024px) {#style-switcher {display: none;}}
+	
+	
+	
+	//testimonial
+	
+.carousel-indicators {
+	bottom: 0px !important;
+}	
+#testimonial4{
+  overflow: hidden;
+  min-height: 375px;
+  position: relative;
+  background: #f2f2f2;
+  //background: #1583c9;
+  //background: #F91949;
+}
+#testimonial4 .carousel-inner{
+  width: 75%;
+  margin: auto;
+}
+#testimonial4 .carousel-inner:hover{
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+#testimonial4 .carousel-inner:active{
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+#testimonial4 .carousel-inner .item{
+  overflow: hidden;
+}
+
+.testimonial4_indicators .carousel-indicators{
+  left: 0;
+  margin: 0;
+  width: 100%;
+  font-size: 0;
+  height: 20px;
+  padding: 0 5px;
+  cursor: e-resize;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: absolute;
+  text-align: center;
+  white-space: nowrap;
+}
+.testimonial4_indicators .carousel-indicators li{
+  padding: 0;
+  width: 10px;
+  height: 10px;
+  border: none;
+  text-indent: 0;
+  margin: 2px 3px;
+  cursor: pointer;
+  display: inline-block;
+  //background: #ffffff;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+}
+.testimonial4_indicators .carousel-indicators .active{
+  padding: 0;
+  width: 10px;
+  height: 10px;
+  border: none;
+  margin: 2px 3px;
+  background-color: #000;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+}
+.testimonial4_indicators .carousel-indicators::-webkit-scrollbar{
+  height: 3px;
+}
+.testimonial4_indicators .carousel-indicators::-webkit-scrollbar-thumb{
+  background: #eeeeee;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+.testimonial4_control_button .carousel-control{
+  top: 175px;
+  opacity: 1;
+  width: 40px;
+  bottom: auto;
+  height: 40px;
+  font-size: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  overflow: hidden;
+  line-height: 38px;
+  text-shadow: none;
+  text-align: center;
+  position: absolute;
+  background: transparent;
+  border: 2px solid black;
+  text-transform: uppercase;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: all 0.6s cubic-bezier(0.3,1,0,1);
+  transition: all 0.6s cubic-bezier(0.3,1,0,1);
+}
+.testimonial4_control_button .carousel-control.left{
+	color: black;
+  left: 7%;
+  right: auto;
+}
+.testimonial4_control_button .carousel-control.right{
+	color: black;
+  right: 7%;
+  left: auto;
+}
+.testimonial4_control_button .carousel-control.left:hover,
+.testimonial4_control_button .carousel-control.right:hover{
+  color: #000;
+  background: #fff;
+  border: 2px solid #fff;
+}
+
+.testimonial4_header{
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 550px;
+  display: block;
+  margin: 30px auto;
+  text-align: center;
+  position: relative;
+}
+.testimonial4_header h4{
+  //color: #ffffff;
+  font-size: 30px;
+  font-weight: 600;
+  position: relative;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.testimonial4_slide{
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 70%;
+  margin: auto;
+  padding: 20px;
+  position: relative;
+  text-align: center;
+}
+.testimonial4_slide img {
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 300px;
+  height: 100px;
+  margin: auto;
+  display: block;
+  color: #f2f2f2;
+  font-size: 18px;
+  line-height: 46px;
+  text-align: center;
+  position: relative;
+}
+
+.testimonial4_slide p {
+  //color: #ffffff;
+  font-size: 16px;
+  margin: 40px 0 20px 0;
+}
+
+.testimonial4_slide h4 {
+  //color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+.parallax {
+	display: block;
+	width: 100%;
+	position: relative;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50%;
+	background: image-url('main-search-background-10.jpg') no-repeat;
+	height: 505px;
+	z-index: 9;
+	//opacity: 0.6;
+}
+
+.text-content {
+	z-index: 999;
+}
+
+.text-content p {
+	color: white;
+}
+
+
+
+.breadcrumb-image {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 104px 0 110px;
+    position: relative;
+    width:100%;
+}
+.breadcrumb-image::before {
+    background: rgba(0, 0, 0, 0.80) none repeat scroll 0 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}
+.breadcrumb-image h1 {
+    color: #ffffff;
+    font-size: 33px;
+    font-weight: 600;
+    line-height: 40px;
+    position: relative;
+    text-transform: uppercase;
+}
+.breadcrumbs_path {
+    color: #fff;
+    margin-top: 8px;
+    position: relative;
+    z-index: 9;
+}
+.breadcrumbs_path > a {
+    color: #fff;
+    transition: all 0.3s ease 0s;
+}

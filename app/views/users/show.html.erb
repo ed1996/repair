@@ -33,9 +33,18 @@
 		<div class="col-lg-4 col-md-4 margin-top-0">
 				
 			<!-- Verified Badge -->
-			<div class="verified-badge with-tip" data-tip-content="Account has been verified and belongs to the person or organization represented.">
-				<i class="fas fa-check"></i> Verified Account
-			</div>
+			<% if @user.confirmed_at %>
+				<div class="verified-badge with-tip" data-tip-content="Account has been verified and belongs to the person or organization represented.">
+					<i class="fas fa-check"></i> Email confirmé
+				</div>
+                    
+                <% else %>
+	                <div class="unverified-badge with-tip" data-tip-content="Account has been verified and belongs to the person or organization represented.">
+						<i class="fas fa-times-circle"></i> Email non confirmé
+					</div>
+                    
+                <% end %>
+			
 
 			<!-- Contact -->
 			<div class="boxed-widget margin-top-30 margin-bottom-50">
@@ -50,7 +59,7 @@
 					<!-- <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> -->
 				</ul>
 
-				<% if current_user != @user %>
+				<% if current_user != @user && user_signed_in? %>
                     <div class="row-space-2">
                         <%= link_to "Envoyer un message", conversations_path(sender_id: current_user.id,
                         recipient_id: @user.id), method: 'post', class:"send-message-to-owner button popup-with-zoom-anim" %>
@@ -77,35 +86,35 @@
 				<% else %>
 			    
 			    <!-- Listing Item -->
-			    <% @companies.each do |company| %>
-					<div class="col-lg-12 col-md-12">
-						<div class="listing-item-container list-layout">
-							<a href="<%= company_path(company) %>" class="listing-item">
-								
-								<!-- Image -->
-								<div class="listing-item-image">
-									<%= image_tag company.photos[0].image.url(:medium) if company.photos.length > 0 %>
-									<span class="tag"><%= company.category_artisan %></span>
-								</div>
-								
-								<!-- Content -->
-								<div class="listing-item-content">
-									<div class="listing-badge now-open">Now Open</div>
-	
-									<div class="listing-item-inner">
-										<h3><%= company.listingname %></h3>
-										<span><%= company.address %></span>
-										<div class="star-rating" data-rating="3.5">
-											<div class="rating-counter">Nombre d'avis : <%= company.reviews.length %></div>
-										</div>
+				    <% @companies.each do |company| %>
+						<div class="col-lg-12 col-md-12">
+							<div class="listing-item-container list-layout">
+								<a href="<%= company_path(company) %>" class="listing-item">
+									
+									<!-- Image -->
+									<div class="listing-item-image">
+										<%= image_tag company.photos[0].image.url(:medium) if company.photos.length > 0 %>
+										<span class="tag"><%= company.category_artisan %></span>
 									</div>
-	
-									<!--<span class="like-icon"></span>-->
-								</div>
-							</a>
+									
+									<!-- Content -->
+									<div class="listing-item-content">
+										<div class="listing-badge now-open">Now Open</div>
+		
+										<div class="listing-item-inner">
+											<h3><%= company.listingname %></h3>
+											<span><%= company.address %></span>
+											<div class="star-rating" data-rating="3.5">
+												<div class="rating-counter">Nombre d'avis : <%= company.reviews.length %></div>
+											</div>
+										</div>
+		
+										<!--<span class="like-icon"></span>-->
+									</div>
+								</a>
+							</div>
 						</div>
-					</div>
-				<% end %>
+					<% end %>
 				<% end %>
 				<!-- Listing Item / End -->
 
@@ -182,53 +191,3 @@
 
 </div>
 <!-- Footer / End -->
-
-
-
-
-<div class="row">
-    <div class="col-md-3">
-        <%= image_tag avatar_url(@user), class:"avatar-full" %>
-        <% if current_user != @user %>
-            <div class="row-space-2">
-                <%= link_to "Envoyer un message", conversations_path(sender_id: current_user.id,
-                recipient_id: @user.id), method: 'post', class:"btn btn-primary wide" %>
-            </div>
-        <% end %>
-        <div class="panel panel-default">
-            <div class="panel-heading">Vérification</div>
-            <div class="panel-body">
-                <% if @user.confirmed_at %>
-                    Email confirmé
-                <% else %>
-                    Email non confirmé
-                <% end %>
-                
-                <br><br>
-                Email : <%= @user.email %><br>
-                Tél: <%= @user.phone_number %>
-                </div>
-        </div>
-    </div>
-    <div class="col-md-9">
-        <h2><%= @user.fullname %></h2>
-        <div class="description row-space-3">
-            <%= @user.description %>
-            <br>
-            <p>Nombre d'entreprise(s) : <%= @companies.length %></p>
-            <br>
-            <% @companies.each do |company| %>
-                <div class="col-md-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading preview">
-                            <%= image_tag company.photos[0].image.url(:medium) if company.photos.length > 0 %>
-                        </div>
-                        <div class="panel-body">
-                            <p class="home-link"><b><%= link_to company.listingname, company_path(company) %> - <%= link_to company.category_artisan, company_path(company) %></b></p>
-                        </div>
-                    </div>
-                </div>
-            <% end %>
-        </div>
-    </div>
-</div>

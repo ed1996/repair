@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
  
- before_action :set_company, only: [:show, :edit, :update]
+ before_action :set_company, only: [:show, :edit, :update, :destroy]
  before_action :authenticate_user!, except: [:show]
  before_action :require_same_user, only: [:edit, :update]
  
@@ -55,6 +55,10 @@ class CompaniesController < ApplicationController
        end
    end
    
+   def destroy
+       @company.destroy
+   end
+   
    
    private
     def set_company
@@ -62,7 +66,7 @@ class CompaniesController < ApplicationController
     end
     
     def company_params
-       params.require(:company).permit(:category_artisan, :listingname, :summary, :address, :phone, :siret, :price) 
+       params.require(:company).permit(:category_artisan, :listingname, :summary, :address, :phone, :siret, :price, :linksocialf, :linkweb) 
     end
     
     def require_same_user

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180522191639) do
+ActiveRecord::Schema.define(version: 20180618212804) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 20180522191639) do
     t.string   "listingname"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "linksocialf"
+    t.string   "linkweb"
   end
 
   add_index "companies", ["user_id"], name: "index_companies_on_user_id"

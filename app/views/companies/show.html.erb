@@ -1,12 +1,5 @@
-<div class="panel panel-default">
-    <div class="panel-body">
-        
-        <!-- Slider
-================================================== -->
-<div class="listing-slider mfp-gallery-container margin-bottom-0">
-	<%= image_tag @photos[0].image.url(), class:"img-responsive" if @photos.length > 0 %>
-</div>
-        
+
+   <div class="container"> 
         	<div class="row sticky-wrapper">
 		<div class="col-lg-8 col-md-8 padding-right-30">
 
@@ -30,10 +23,10 @@
 			<div id="listing-nav" class="listing-nav-container">
 				<ul class="listing-nav">
 					<li><a href="#listing-overview" class="active">Description</a></li>
-					<li><a href="#listing-pricing-list">Pricing</a></li>
-					<li><a href="#listing-location">Location</a></li>
-					<li><a href="#listing-reviews">Reviews</a></li>
-					<li><a href="#add-review">Add Review</a></li>
+					<li><a href="#listing-pricing-list">Tarif</a></li>
+					<li><a href="#listing-location">Localisation</a></li>
+					<li><a href="#listing-reviews">Avis</a></li>
+					<li><a href="#add-review">Ajouter un avis</a></li>
 				</ul>
 			</div>
 			
@@ -47,25 +40,78 @@
 
 				<!-- Amenities -->
 				<h3 class="listing-desc-headline">Amenities</h3>
-				<ul class="listing-features checkboxes margin-top-0">
-					<li>Elevator in building</li>
-					<li>Friendly workspace</li>
-					<li>Instant Book</li>
-					<li>Wireless Internet</li>
-					<li>Free parking on premises</li>
-					<li>Free parking on street</li>
-				</ul>
+				<% if @company.category_artisan == "Plombier" %>
+					<ul class="listing-features checkboxes margin-top-0">
+						<li><i class="fas fa-check-circle"></i> Réparation de fuite </li>
+						<li><i class="fas fa-check-circle"></i> Dégorgement de canalisation</li>
+						<li><i class="fas fa-check-circle"></i> Dégorgement d’évier/lavabo</li>
+						<li><i class="fas fa-check-circle"></i> Dégorgement de douche/baignoire</li>
+						<li><i class="fas fa-check-circle"></i> Débouchage de WC</li>
+						<li><i class="fas fa-check-circle"></i> Dégorgement de la colonne centrale</li>
+					</ul>
+				<% else %>
+					<ul class="listing-features checkboxes margin-top-0">
+						<li><i class="fas fa-check-circle"></i> Prise des mesures ; relevés de cote ; croquis</li>
+						<li><i class="fas fa-check-circle"></i> Fabrication de pièces décoratives en métal : traçage, découpage, cintrage, forgeage, perçage, pliage, meulage, ajustage et soudure</li>
+						<li><i class="fas fa-check-circle"></i> Montage des éléments sur le chantier</li>
+						<li><i class="fas fa-check-circle"></i> Installation et maintenance d’équipements de protection électroniques</li>
+						<li><i class="fas fa-check-circle"></i> Montage des fermetures des portes, fenêtres, etc</li>
+						<li><i class="fas fa-check-circle"></i> installer toutes les fermetures et gonds des portes, des fenêtres, des volets roulants, des battants, des stores, des clôtures, etc</li>
+					</ul>
+				<% end %>
+			</div>
+			
+			<!-- Slider -->
+			<div id="listing-gallery" class="listing-section">
+				<h3 class="listing-desc-headline margin-top-70">Gallery</h3>
+				 <!-- Caroussel -->
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                      <!-- Indicators -->
+                      <% if @photos %>
+                          <% @photos.each do |photo| %>
+                              <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="<%= photo.id %>" class="active"></li>
+                              </ol>
+                          <% end %>
+                      <% end %>
+                    
+                      <!-- Wrapper for slides -->
+                      <div class="carousel-inner">
+                        <% if @photos %>
+                        <% @photos.each do |photo| %>
+                        <div class="item <%= 'active' if photo.id == @photos[0].id %>">
+                          <%= image_tag photo.image.url() %>
+                        </div>
+                        <% end %>
+                        <% end %>
+                    
+                      </div>
+                    
+                      <!-- Left and right controls -->
+                      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Précédent</span>
+                      </a>
+                      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Suivant</span>
+                      </a>
+                    </div>
+            </div>
+        </div>
 			</div>
 
 
-			<!-- Food Menu -->
+			<!-- Food Menu 
 			<div id="listing-pricing-list" class="listing-section">
 				<h3 class="listing-desc-headline margin-top-70 margin-bottom-30">Pricing</h3>
 
 				<div class="show-more">
-					<div class="pricing-list-container">
+					<div class="pricing-list-container">-->
 						
-						<!-- Food List -->
+						<!-- Food List 
 						<h4>Burgers</h4>
 						<ul>
 							<li>
@@ -88,9 +134,9 @@
 								<p>Cheese, chicken fillet, avocado, bacon, tomatoes, basil</p>
 								<span>$6</span>
 							</li>
-						</ul>
+						</ul>-->
 
-						<!-- Food List -->
+						<!-- Food List 
 						<h4>Drinks</h4>
 						<ul>
 							<li>
@@ -114,7 +160,7 @@
 					</div>
 				</div>
 				<a href="#" class="show-more-button" data-more-title="Show More" data-less-title="Show Less"><i class="fa fa-angle-down"></i></a>
-			</div>
+			</div>-->
 			<!-- Food Menu / End -->
 
 		
@@ -320,16 +366,16 @@
 
 			<!-- Opening Hours -->
 			<div class="boxed-widget opening-hours margin-top-35">
-				<div class="listing-badge now-open">Now Open</div>
-				<h3><i class="far fa-clock"></i></i> Opening Hours</h3>
+				<!--<div class="listing-badge now-open">Now Open</div>-->
+				<h3><i class="far fa-clock"></i></i> Horaires</h3>
 				<ul>
-					<li>Monday <span>9 AM - 5 PM</span></li>
-					<li>Tuesday <span>9 AM - 5 PM</span></li>
-					<li>Wednesday <span>9 AM - 5 PM</span></li>
-					<li>Thursday <span>9 AM - 5 PM</span></li>
-					<li>Friday <span>9 AM - 5 PM</span></li>
-					<li>Saturday <span>9 AM - 3 PM</span></li>
-					<li>Sunday <span>Closed</span></li>
+					<li>Lundi <span>9h - 19h</span></li>
+					<li>Mardi <span>9h - 19h</span></li>
+					<li>Mercredi <span>9h - 19h</span></li>
+					<li>Jeudi <span>9h - 19h</span></li>
+					<li>Vendredi <span>9h - 19h</span></li>
+					<li>Samedi <span>9h - 19h</span></li>
+					<li>Dimanche <span>Fermer</span></li>
 				</ul>
 			</div>
 			<!-- Opening Hours / End -->
@@ -343,46 +389,57 @@
 				</div>
 				<ul class="listing-details-sidebar">
 					<li><i class="fas fa-phone"></i><%= @company.phone %></li>
-					<!-- <li><i class="sl sl-icon-globe"></i> <a href="#">http://example.com</a></li> -->
-					<li><i class="far fa-envelope"></i> <a href="#"><%= @company.user.email %></a></li>
+					<li><i class="far fa-envelope"></i> <%= @company.user.email %></li>
+					<% if @company.linkweb == "" %>
+					<% else %>
+					<li><i class="fas fa-globe"></i> <a href="<%= @company.linkweb %>" target="_blank"><%= @company.linkweb %></a></li>
+					<% end %>
 				</ul>
-
+				<br>
 				<ul class="listing-details-sidebar social-profiles">
-					<li><a href="#" class="facebook-profile"><i class="fa fa-facebook-square"></i> Facebook</a></li>
-					<li><a href="#" class="twitter-profile"><i class="fa fa-twitter"></i> Twitter</a></li>
+					<% if @company.linksocialf == "" %>
+					<% else %>
+					<li><a href="<%= @company.linksocialf %>" target="_blank" class="facebook-profile"><i class="fab fa-facebook-square"></i> Facebook</a></li>
+					<% end %>
+					<!--<li><a href="#" class="twitter-profile"><i class="fab fa-twitter-square"></i> Twitter</a></li>-->
 					<!-- <li><a href="#" class="gplus-profile"><i class="fa fa-google-plus"></i> Google Plus</a></li> -->
 				</ul>
 
 				<!-- Reply to review popup -->
-				<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
-					<div class="small-dialog-header">
-						<h3>Send Message</h3>
-					</div>
-					<div class="message-reply margin-top-0">
-						<textarea cols="40" rows="3" placeholder="Your message to Tom"></textarea>
-						<button class="button">Send Message</button>
-					</div>
-				</div>
-
-				<a href="#small-dialog" class="send-message-to-owner button popup-with-zoom-anim"><i class="far fa-envelope-open"></i> Send Message</a>
+				<% if @company.user == current_user %>
+					<% else %>
+						<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+							<div class="small-dialog-header">
+								<h3>Send Message</h3>
+							</div>
+						
+							<div class="message-reply margin-top-0">
+								<textarea cols="40" rows="3" placeholder="Your message to Tom"></textarea>
+								<button class="button">Send Message</button>
+							</div>
+						</div>
+						<!--<a href="#small-dialog" class="send-message-to-owner button popup-with-zoom-anim"><i class="far fa-envelope-open"></i> Send Message</a>-->
+						<%= link_to "Envoyer un message", user_path(@company.user), class:"send-message-to-owner button popup-with-zoom-anim" %>
+               		 	
+				<% end %>
 			</div>
 			<!-- Contact / End-->
 
 
-			<!-- Share / Like -->
+			<!-- Share / Like 
 			<div class="listing-share margin-top-40 margin-bottom-40 no-border">
 				<button class="like-button"><span class="like-icon"></span> Bookmark this listing</button> 
-				<span>159 people bookmarked this place</span>
+				<span>159 people bookmarked this place</span> -->
 
-					<!-- Share Buttons -->
+					<!-- Share Buttons 
 					<ul class="share-buttons margin-top-40 margin-bottom-0">
 						<li><a class="fb-share" href="#"><i class="fa fa-facebook"></i> Share</a></li>
 						<li><a class="twitter-share" href="#"><i class="fa fa-twitter"></i> Tweet</a></li>
 						<li><a class="gplus-share" href="#"><i class="fa fa-google-plus"></i> Share</a></li>
-						<!-- <li><a class="pinterest-share" href="#"><i class="fa fa-pinterest-p"></i> Pin</a></li> -->
+						<!-- <li><a class="pinterest-share" href="#"><i class="fa fa-pinterest-p"></i> Pin</a></li> 
 					</ul>
 					<div class="clearfix"></div>
-			</div>
+			</div>-->
 
 		</div>
 		<!-- Sidebar / End -->
@@ -391,69 +448,70 @@
 </div>
 
 
-<!-- Footer
-================================================== -->
-<div id="footer" class="margin-top-15">
-	<!-- Main -->
-	<div class="container">
-		<div class="row">
-			<div class="col-md-5 col-sm-6">
-				<%= image_tag "logo.png", class: "footer-logo" %>
-				<br><br>
-				<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
-			</div>
-
-			<div class="col-md-4 col-sm-6 ">
-				<h4>Helpful Links</h4>
-				<ul class="footer-links">
-					<li><a href="#">Login</a></li>
-					<li><a href="#">Sign Up</a></li>
-					<li><a href="#">My Account</a></li>
-					<li><a href="#">Add Listing</a></li>
-					<li><a href="#">Pricing</a></li>
-					<li><a href="#">Privacy Policy</a></li>
-				</ul>
-
-				<ul class="footer-links">
-					<li><a href="#">FAQ</a></li>
-					<li><a href="#">Blog</a></li>
-					<li><a href="#">Our Partners</a></li>
-					<li><a href="#">How It Works</a></li>
-					<li><a href="#">Contact</a></li>
-				</ul>
-				<div class="clearfix"></div>
-			</div>		
-
-			<div class="col-md-3  col-sm-12">
-				<h4>Contact Us</h4>
-				<div class="text-widget">
-					<span>12345 Little Lonsdale St, Melbourne</span> <br>
-					Phone: <span>(123) 123-456 </span><br>
-					E-Mail:<span> <a href="#">office@example.com</a> </span><br>
-				</div>
-
-				<ul class="social-icons margin-top-20">
-					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-					<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-					<li><a class="vimeo" href="#"><i class="icon-vimeo"></i></a></li>
-				</ul>
-
-			</div>
-
-		</div>
+		<!-- Footer
+		================================================== -->
+		<div id="footer" class="margin-top-15">
+			<!-- Main -->
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5 col-sm-6">
+						<%= image_tag "logo.png", class: "footer-logo" %>
+						<br><br>
+						<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
+					</div>
 		
-		<!-- Copyright -->
-		<div class="row">
-			<div class="col-md-12">
-				<div class="copyrights">© 2017 Listeo. All Rights Reserved.</div>
+					<div class="col-md-4 col-sm-6 ">
+						<h4>Helpful Links</h4>
+						<ul class="footer-links">
+							<li><a href="#">Login</a></li>
+							<li><a href="#">Sign Up</a></li>
+							<li><a href="#">My Account</a></li>
+							<li><a href="#">Add Listing</a></li>
+							<li><a href="#">Pricing</a></li>
+							<li><a href="#">Privacy Policy</a></li>
+						</ul>
+		
+						<ul class="footer-links">
+							<li><a href="#">FAQ</a></li>
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">Our Partners</a></li>
+							<li><a href="#">How It Works</a></li>
+							<li><a href="#">Contact</a></li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>		
+		
+					<div class="col-md-3  col-sm-12">
+						<h4>Contact Us</h4>
+						<div class="text-widget">
+							<span>12345 Little Lonsdale St, Melbourne</span> <br>
+							Phone: <span>(123) 123-456 </span><br>
+							E-Mail:<span> <a href="#">office@example.com</a> </span><br>
+						</div>
+		
+						<ul class="social-icons margin-top-20">
+							<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+							<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+							<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
+							<li><a class="vimeo" href="#"><i class="icon-vimeo"></i></a></li>
+						</ul>
+		
+					</div>
+		
+				</div>
+				
+				<!-- Copyright -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="copyrights">© 2017 Listeo. All Rights Reserved.</div>
+					</div>
+				</div>
+		
 			</div>
+		
 		</div>
-
-	</div>
-
+		<!-- Footer / End -->
 </div>
-<!-- Footer / End -->
 
 
 <!-- Back To Top Button -->
@@ -598,23 +656,7 @@
             </div>
         </div>
         
-        <!-- Entreprise à proximité -->
-        <h3>Entreprise à proximitée...</h3>
-        <div class="row">
-            <% for company in @company.nearbys(2).limit(3) %>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading preview">
-                        <%= image_tag company.photos[0].image.url(:medium) if company.photos.length > 0 %>
-                    </div>
-                    <div class="panel-body">
-                        <%= link_to company.listingname, company %><br>
-                        (à <%= (company.distance*1.6).round(2) %> km)
-                    </div>
-                </div>
-            </div>
-            <% end %>
-        </div>
+        
         
     </div>
 </div>

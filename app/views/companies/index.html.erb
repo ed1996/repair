@@ -14,7 +14,7 @@
 			<!-- Listings -->
 			<div class="col-lg-12 col-md-12">
 				<div class="dashboard-list-box margin-top-0">
-					<h4>Active Listings</h4>
+					<h4>Entreprise(s) :</h4>
 					
     <% @Companies.each do |company| %>
                     <ul>
@@ -33,7 +33,7 @@
 							</div>
 							<div class="buttons-to-right">
 								<%= link_to "Mettre à jour", edit_company_path(company), class:"button gray" %>
-								<%= link_to "Supprimer", companies_path, method: :delete, data: {confirm: "êtes-vous sûr ?"}, class:"button gray" %>
+								<%= link_to "Supprimer", company_path(company), method: :delete, data: {confirm: "êtes-vous sûr ?"}, class:"button gray" %>
 							</div>
 						</li>
 
@@ -63,32 +63,3 @@
 
 
 
-
-<div class="row">
-    <div class="col-md-3">
-        <ul class="sidebar-list">
-            <li class="sidebar-item"><%= link_to "Mes annonces", companies_path, class:"sidebar-link active" %></li>
-        </ul>
-    </div>
-    <div class="col-md-9">
-        <div class="panel panel-default">
-            <div class="panel-heading"> Mes annonces</div>
-            <div class="panel-body">
-                <% @Companies.each do |company| %>
-                <div class="row">
-                    <div class="col-md-2">
-                        <%= image_tag company.photos[0].image.url(:thumb) if company.photos.length > 0 %>
-                    </div>
-                    <div class="col-md-7">
-                        <h4><%= company.listingname %></h4>
-                    </div>
-                    <div class="col-md-3 right">
-                        <%= link_to "Mettre à jour", edit_company_path(company), class:"btn btn-primary" %>
-                    </div>
-                </div>
-                <hr>
-                <% end %>
-            </div>
-        </div>
-    </div>
-</div>
