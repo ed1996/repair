@@ -39,15 +39,15 @@
 					<% end %>
 					<br><br>
 					<%= form_tag searchcompany_path, method: :get do %>
-    <div class="row">
-        <div class="col-md-10">
-            <%= select :category_artisan, params[:category_artisan], [["Plombier","Plombier"],["Serrurier","Serrurier"]], prompt:"A sélectionner...", class:"form-control" %>
-        </div>
-        <div class="col-md-2">
-            <%= submit_tag "Recherche", class:"btn btn-primary" %>
-        </div>
-    </div>
-<% end %>
+					    <div class="row">
+					        <div class="col-md-10">
+					            <%= select :category_artisan, params[:category_artisan], [["Plombier","Plombier"],["Serrurier","Serrurier"]], prompt:"A sélectionner...", class:"form-control" %>
+					        </div>
+					        <div class="col-md-2">
+					            <%= submit_tag "Recherche", class:"btn btn-primary" %>
+					        </div>
+					    </div>
+					<% end %>
 				</div>
 			</div>
 		</div>
@@ -121,7 +121,7 @@
 		<!-- Stage -->
 		<div class="col-md-4">
 			<div class="icon-box-2 with-line">
-				<i class="fas fa-street-view"></i>
+				<i class="fas fa-street-view" style="color: #F91949;"></i>
 				<h3>Trouvez un artisan pour votre problème</h3>
 				<p>Toutes les catégories artisanales sont présentes sur la plateforme.</p>
 			</div>
@@ -130,7 +130,7 @@
 		<!-- Stage -->
 		<div class="col-md-4">
 			<div class="icon-box-2 with-line">
-				<i class="fas fa-comments"></i>
+				<i class="fas fa-comments" style="color: #F91949;"></i>
 				<h3>Contacter l'artisan</h3>
 				<p>Vous pouvez échanger avec les artisans sur la plateforme et également voir les feedback des autres utilisateurs.</p>
 			</div>
@@ -139,7 +139,7 @@
 		<!-- Stage -->
 		<div class="col-md-4">
 			<div class="icon-box-2">
-				<i class="far fa-address-book"></i>
+				<i class="far fa-address-book" style="color: #F91949;"></i>
 				<h3>Faite une prise de rendez-vous</h3>
 				<p>Prenez rendez-vous avec l'artisan que vous voulez et laisser un avis après service rendu.</p>
 			</div>
@@ -229,7 +229,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5 col-sm-6">
-				<img class="footer-logo" src="/assets/logo.png" alt="">
+				<img class="footer-logo" src="/assets/logovitartisan2.png" alt="">
 				<br><br>
 				<p>Annuaire pour les artisans de France qui cherchent à développer leurs clientèles et pour les personnes qui ont besoin du meilleur artisan pour réaliser le meilleur dépannage.</p>
 			</div>
@@ -255,14 +255,13 @@
 				<div class="text-widget">
 				<!--	<span>12345 Little Lonsdale St, Melbourne</span> <br>
 					Phone: <span>(123) 123-456 </span><br>-->
-					E-Mail:<span> <a href="#">office@example.com</a> </span><br>
+					E-Mail:<span> <a href="#">contact@reparee.fr</a> </span><br>
 				</div>
 
 				<ul class="social-icons margin-top-20">
-					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-					<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-					<li><a class="vimeo" href="#"><i class="icon-vimeo"></i></a></li>
+					<li><a href="#"><img src="/assets/facebook.png"></a></li>
+					<li><a href="#"><img src="/assets/twitter.png"></a></li>
+					<li><a href="#"><img src="/assets/google-plus.png"></i></a></li>
 				</ul>
 
 			</div>
@@ -272,7 +271,7 @@
 		<!-- Copyright -->
 		<div class="row">
 			<div class="col-md-12">
-				<div class="copyrights">© 2018 MyRepair. Tous droits réservés.</div>
+				<div class="copyrights">© 2018 Reparee. Tous droits réservés.</div>
 			</div>
 		</div>
 
