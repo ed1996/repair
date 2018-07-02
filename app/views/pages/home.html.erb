@@ -7,7 +7,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h2>Trouvez votre artisan pour votre besoin</h2>
+					<h2>Trouvez votre artisan pour vos besoins</h2>
 					<h4>Explorer l'ensemble des entreprises artisanales dans différentes ville</h4>
                 
                 <%= form_tag search_path, method: :get do %>
@@ -95,7 +95,7 @@
 <div class="row">
 		<div class="breadcrumb-image" style="background-image: url(https://images.pexels.com/photos/544117/pexels-photo-544117.jpeg?w=940&h=650&auto=compress&cs=tinysrgb);">
     <div class="container text-center">
-        <h1>Commment ça fonctionne ?</h1>
+        <h1>Comment ça fonctionne ?</h1>
             <div class="breadcrumbs_path">
                 <a href="#">FAQ</a>
             </div>      
@@ -152,7 +152,7 @@
 
 <div id="testimonial4" class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x" data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
 		<div class="testimonial4_header">
-			<h4>Ce que les artisans disent de la plateforme</h4>
+			<h4>Ce que les artisans pensent de la plateforme</h4>
 		</div>
 		<ol class="carousel-indicators">
 			<li data-target="#testimonial4" data-slide-to="0" class="active"></li>
@@ -163,7 +163,7 @@
 			<div class="item active">
 				<div class="testimonial4_slide">
 						<%= image_tag 'ivan', class:"img-circle img-responsive" %>
-					<p>Lorem ipsum dolor sit amet adipiscing elit am nibh unc varius facilisis eros ed erat in in velit quis arcu ornare laoreet urabitur.</p>
+					<p>"J'ai pu avoir 3 clients en moins de 1 semaine, merci à Reparee !"</p>
 					<h4>Thierry Wieczorek</h4>
 				</div>
 			</div>
@@ -171,14 +171,14 @@
 				<div class="testimonial4_slide">
 					<%= image_tag 'thierry', class:"img-circle img-responsive" %>
 					<!--<img src="http://via.placeholder.com/100x100" class="img-circle img-responsive" />-->
-					<p>Lorem ipsum dolor sit amet adipiscing elit am nibh unc varius facilisis eros ed erat in in velit quis arcu ornare laoreet urabitur.</p>
+					<p>"Ayant travaillé pour une société de dépannage j'ai décidé de me mettre à mon compte et Reparee m'a permis de développer ma clientèle."</p>
 					<h4>Stéphane Michaud</h4>
 				</div>
 			</div>
 			<div class="item">
 				<div class="testimonial4_slide">
 					<%= image_tag 'stephane', class:"img-circle img-responsive" %>
-					<p>J'ai décidé de me mettre en indépendant et pour trouver mes clients je passe par MyRepair qui me permet de trouver des clients pour des dépannages.</p>
+					<p>"J'ai décidé de me mettre en indépendant et pour trouver mes clients je passe par MyRepair qui me permet de trouver des clients pour des dépannages."</p>
 					<h4>Rodrigue Ojeda</h4>
 				</div>
 			</div>
@@ -243,7 +243,7 @@
 				</ul>
 
 				<ul class="footer-links">
-					<li><a href="#">FAQ</a></li>
+					<li><a href="<%= faq_path %>">FAQ</a></li>
 					<li><a href="<%= blog_path %>">Blog</a></li>
 					<li><a href="<%= contact_path %>">Contact</a></li>
 				</ul>
