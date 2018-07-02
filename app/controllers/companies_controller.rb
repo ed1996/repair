@@ -57,6 +57,7 @@ class CompaniesController < ApplicationController
    
    def destroy
        @company.destroy
+       redirect_to companies_path
    end
    
    
