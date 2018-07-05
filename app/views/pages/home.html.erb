@@ -7,7 +7,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<h2>Trouvez votre artisan pour vos besoins</h2>
+					<h2 style="margin-top:50px;">Trouvez votre artisan pour vos besoins</h2>
 					<h4>Explorer l'ensemble des entreprises artisanales dans différentes ville</h4>
                 
                 <%= form_tag search_path, method: :get do %>
@@ -370,3 +370,50 @@
 }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"></script>
+<script>
+
+
+
+/*----------------------------------------------------*/
+	/*  Sticky Header
+	/*----------------------------------------------------*/
+	$( "#header" ).not( "#header.not-sticky" ).clone(true).addClass('cloned unsticky').insertAfter( "#header" );
+	$( "#navigation.style-2" ).clone(true).addClass('cloned unsticky').insertAfter( "#navigation.style-2" );
+
+	// Logo for header style 2
+	$( "#logo .sticky-logo" ).clone(true).prependTo("#navigation.style-2.cloned ul#responsive");
+
+
+	// sticky header script
+	var headerOffset = $("#header-container").height() * 2; // height on which the sticky header will shows
+
+	$(window).scroll(function(){
+		if($(window).scrollTop() >= headerOffset){
+			$("#header.cloned").addClass('sticky').removeClass("unsticky");
+			$("#navigation.style-2.cloned").addClass('sticky').removeClass("unsticky");
+		} else {
+			$("#header.cloned").addClass('unsticky').removeClass("sticky");
+			$("#navigation.style-2.cloned").addClass('unsticky').removeClass("sticky");
+		}
+	});
+
+
+	/*----------------------------------------------------*/
+	/*  Back to Top
+	/*----------------------------------------------------*/
+	var pxShow = 600; // height on which the button will show
+	var scrollSpeed = 500; // how slow / fast you want the button to scroll to top.
+
+	$(window).scroll(function(){
+	 if($(window).scrollTop() >= pxShow){
+		$("#backtotop").addClass('visible');
+	 } else {
+		$("#backtotop").removeClass('visible');
+	 }
+	});
+
+	$('#backtotop a').on('click', function(){
+	 $('html, body').animate({scrollTop:0}, scrollSpeed);
+	 return false;
+	});
+</script>
