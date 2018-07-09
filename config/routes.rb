@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   
   get '/search' => 'pages#search'
   get '/searchcompany' => 'pages#searchcompany'
+  get '/searching' => 'pages#searching'
   
   get '/contact' => 'pages#contact'
   

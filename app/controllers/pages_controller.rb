@@ -7,8 +7,34 @@ class PagesController < ApplicationController
     end
     
     def search
-        if params[:search].present? && params[:search].strip != "" && params[:category_artisan].present? 
+        if params[:search].present? && params[:search].strip != ""
            session[:myrepair_search] = params[:search] 
+       else
+           redirect_to root_path, notice:"Veuillez remplir tout les champs..."
+        end
+        
+        arrResult = Array.new
+        
+        if session[:myrepair_search] && session[:myrepair_search] != ""
+           @companies_address = Company.near(session[:myrepair_search], 5, order:'distance')
+       else
+           @companies_address = Company.all
+        end
+        
+        
+        
+        @search = @companies_address.ransack(params[:q])
+        @companies = @search.result
+        
+        @arrCompanies = @companies.to_a
+        
+        
+        
+    end
+    
+    def searching
+        if params[:searching].present? && params[:searching].strip != "" && params[:category_artisan].present? 
+           session[:myrepair_search] = params[:searching] 
        else
            redirect_to root_path, notice:"Veuillez remplir tout les champs..."
         end
@@ -18,15 +44,16 @@ class PagesController < ApplicationController
         if session[:myrepair_search] && session[:myrepair_search] != ""
            @companies_address = Company.where(category_artisan: params[:category_artisan]).near(session[:myrepair_search], 5, order:'distance')
        else
-           redirect_to root_path, notice:"Modifications enregistrée..."
+           @companies_address = Company.all
         end
         
         
         
-        @search = @companies_address.ransack(params[:q])
-        @companies = @search.result
+        @searching = @companies_address.ransack(params[:q])
+        @companies = @searching.result
         
         @arrCompanies = @companies.to_a
+        
         
         
     end
