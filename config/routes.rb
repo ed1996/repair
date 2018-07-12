@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   get '/faq' => 'pages#faq'
   
   get '/blog' => 'pages#blog'
+  
+  resources :contacts, only: [:new, :create]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
