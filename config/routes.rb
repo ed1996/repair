@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   
   get '/blog' => 'pages#blog'
   
+  match "/404" => "errors#error404", via: [:get, :post, :patch, :delete]
+  
   resources :contacts, only: [:new, :create]
 
   # Example of regular route:
