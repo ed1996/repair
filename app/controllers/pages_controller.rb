@@ -77,4 +77,5 @@ class PagesController < ApplicationController
         @arrCompaniescategory = @companiescategory.to_a
     end
 
+
 end
